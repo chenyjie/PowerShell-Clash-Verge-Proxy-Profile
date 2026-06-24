@@ -1,21 +1,20 @@
-# ===== FlClash Auto Proxy =====
-# - System Proxy (Mixed): 127.0.0.1:7890
-# - External Controller: 127.0.0.1:9090
-# - No API Secret
+# ===== Clash Verge "Enterprise" Auto Proxy (Matched to your config) =====
+# - System Proxy (Mixed): 127.0.0.1:7897
+# - External Controller: 127.0.0.1:9097
+# - API Secret: 123456
 # - No external calls, fast startup.
 
 # ---- Config ----
 $global:CLASH_PROXY_HOST = "127.0.0.1"
-$global:CLASH_PROXY_PORT = 7890
+$global:CLASH_PROXY_PORT = 7897
 $global:CLASH_PROXY_URL  = "http://$($global:CLASH_PROXY_HOST):$($global:CLASH_PROXY_PORT)"
 
 $global:CLASH_API_HOST   = "127.0.0.1"
-$global:CLASH_API_PORT   = 9090
-$global:CLASH_API_SECRET = ""
+$global:CLASH_API_PORT   = 9097
+$global:CLASH_API_SECRET = "123456"
 $global:CLASH_API_BASE   = "http://$($global:CLASH_API_HOST):$($global:CLASH_API_PORT)"
 
 function Get-ClashApiHeaders {
-    if ([string]::IsNullOrWhiteSpace($global:CLASH_API_SECRET)) { return @{} }
     return @{ Authorization = "Bearer $($global:CLASH_API_SECRET)" }
 }
 
